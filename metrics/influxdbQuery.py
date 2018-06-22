@@ -70,17 +70,18 @@ class InfluxDB:
 class Confluence:
 
     def __init__(self, rest_url):
-        user = os.environ['CONFLUENCE_USER']
-        password = os.environ['CONFLUENCE_PASSWORD']
+        self.user = os.environ['CONFLUENCE_USER']
+        self.password = os.environ['CONFLUENCE_PASSWORD']
+        self.headers = {'Content-Type': 'application/json'}
 
-        if not (user and password):
+        if not (self.user and self.password):
             raise Exception('Username/Password not set')
 
-        self.auth = requests.auth.HTTPBasicAuth(user, password)
         self.rest_url = rest_url
 
     def update_page(self, content):
-        return requests.post(self.rest_url, content, auth=self.auth)
+        return requests.post(self.rest_url, content,
+                auth=(self.user, self.password), verify=False, headers=self.headers)
 
 
 #print("Failed Builds")
