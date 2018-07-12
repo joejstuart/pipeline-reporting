@@ -7,7 +7,7 @@ import json
 import os
 
 
-# define the html output for confluence
+# define the html output for confluence.
 def html_output(job_name, job_results, measurement):
     page_content = list()
     today = datetime.datetime.today()
