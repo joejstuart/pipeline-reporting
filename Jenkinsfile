@@ -28,8 +28,33 @@ def changeLogs() {
 	}
 }
 
-node('master') {
-    stage('get changelogs') {
-        changeLogs()
+pipeline {
+
+    agent {
+        kubernetes {
+            cloud 'openshift'
+            label 'stage-trigger-pr'
+            containerTemplate {
+                name 'jnlp'
+                args '${computer.jnlpmac} ${computer.name}'
+                image '172.30.254.79:5000/kubevirt/jenkins-contra-slave:latest'
+                ttyEnabled false
+                command ''
+            }
+        }
+    }
+
+    ['pipeline_reporting', 'stuff'].each { f ->
+        stages {
+            stage("Get Changelog - ${f}") {
+                steps {
+                    node('master') {
+                        script {
+                            changeLogs()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
