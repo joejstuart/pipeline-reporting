@@ -51,7 +51,7 @@ pipeline {
                     script {
                         ["test1", "test2"].each { f ->
                             stage("my stage - ${f}") {
-                            
+                                changeLogs()
                             }
                         }
                     }
