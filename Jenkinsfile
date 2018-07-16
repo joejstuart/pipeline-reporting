@@ -44,7 +44,7 @@ pipeline {
         }
     }
 
-    ['pipeline_reporting', 'stuff'].each { f ->
+    for (f in ["pipeline_reporting", "testing"]) {
         stages {
             stage("Get Changelog - ${f}") {
                 steps {
