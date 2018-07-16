@@ -8,7 +8,7 @@ library identifier: "pipeline-reporting@jenkins",
                                         templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*'],
                                                     [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]])
 */
-
+// add comment
 @NonCPS
 def changeLogs() {
     echo "new changeset"
