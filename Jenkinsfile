@@ -10,7 +10,7 @@ library identifier: "pipeline-reporting@jenkins",
 node() {
 
     echo "test changeset"
-    def changeSet = currentBuild.getChangeSet()
+    def changeSet = currentBuild.getChangeSets()
     echo changeSet.toString()
 
     echo "new changeset"
