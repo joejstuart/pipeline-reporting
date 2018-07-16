@@ -1,3 +1,12 @@
+library identifier: "ci-pipeline@${env.ghprbActualCommit}",
+        retriever: modernSCM([$class: 'GitSCMSource',
+                              remote: "https://github.com/joejstuart/pipeline-reporting.git",
+                              traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
+                                       [$class: 'RefSpecsSCMSourceTrait',
+                                        templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*'],
+                                                    [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]])
+
+
 node() {
 
     def changeLogSets = currentBuild.changeSets
