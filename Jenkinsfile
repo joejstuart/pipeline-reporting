@@ -28,10 +28,17 @@ def changeLogs() {
 	}
 }
 
-node() {
+pipeline {
 
-    echo "test changeset"
-    changeLogs()
-
+    stages {
+        stage("Get Changelog") {
+            steps {
+                node('master') {
+                    script {
+                        changeLogs()
+                    }
+                }
+            }
+        }
+    }
 }
-
