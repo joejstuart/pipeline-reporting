@@ -1,4 +1,4 @@
-library identifier: "ci-pipeline@${env.ghprbActualCommit}",
+library identifier: "pipeline-reporting@jenkins",
         retriever: modernSCM([$class: 'GitSCMSource',
                               remote: "https://github.com/joejstuart/pipeline-reporting.git",
                               traits: [[$class: 'jenkins.plugins.git.traits.BranchDiscoveryTrait'],
