@@ -44,13 +44,15 @@ pipeline {
         }
     }
 
-    for (f in ["pipeline_reporting", "testing"]) {
-        stages {
-            stage("Get Changelog - ${f}") {
-                steps {
-                    node('master') {
-                        script {
-                            changeLogs()
+    stages {
+        stage("Get Changelogs") {
+            steps {
+                node('master') {
+                    script {
+                        ["test1", "test2"].each { f ->
+                            stage("my stage - ${f}") {
+                            
+                            }
                         }
                     }
                 }
