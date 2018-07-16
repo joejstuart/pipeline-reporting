@@ -9,12 +9,8 @@ library identifier: "pipeline-reporting@jenkins",
                                                     [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]])
 */
 
-node() {
-
-    echo "test changeset"
-    def changeSet = currentBuild.getChangeSets()
-    echo changeSet.toString()
-
+@NonCPS
+def changeLogs() {
     echo "new changeset"
     def changeLogSets = currentBuild.changeSets
 	for (int i = 0; i < changeLogSets.size(); i++) {
@@ -30,3 +26,11 @@ node() {
 		}
 	}
 }
+
+node() {
+
+    echo "test changeset"
+    changeLogs()
+
+}
+
