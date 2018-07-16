@@ -10,14 +10,8 @@ library identifier: "pipeline-reporting@jenkins",
 node() {
 
     echo "test changeset"
-    def changeSet = build.getChangeSet()
-    def changeSetIterator = changeSet.iterator()
-    while (changeSetIterator.hasNext()) {
-        def gitChangeSet = changeSetIterator.next()
-        for (def path : gitChangeSet.getPaths()) {
-            println path.getPath()
-        }
-    }
+    def changeSet = currentBuild.getChangeSet()
+    echo changeSet.toString()
 
     echo "new changeset"
     def changeLogSets = currentBuild.changeSets
