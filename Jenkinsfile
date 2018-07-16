@@ -1,3 +1,5 @@
+/*
+
 library identifier: "pipeline-reporting@jenkins",
         retriever: modernSCM([$class: 'GitSCMSource',
                               remote: "https://github.com/joejstuart/pipeline-reporting.git",
@@ -5,7 +7,7 @@ library identifier: "pipeline-reporting@jenkins",
                                        [$class: 'RefSpecsSCMSourceTrait',
                                         templates: [[value: '+refs/heads/*:refs/remotes/@{remote}/*'],
                                                     [value: '+refs/pull/*:refs/remotes/origin/pr/*']]]]])
-
+*/
 
 node() {
 
